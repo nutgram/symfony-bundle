@@ -1,0 +1,13 @@
+services:
+
+  SergiX44\Nutgram\Symfony\DependencyInjection\Factory\NutgramFactory: ~
+
+  SergiX44\Nutgram\Symfony\NutgramConfigurator:
+    autowire: true
+
+  SergiX44\Nutgram\Nutgram:
+    autowire: true
+    public: true
+    factory: [ '@SergiX44\Nutgram\Symfony\DependencyInjection\Factory\NutgramFactory', 'createNutgram' ]
+    arguments: [ '%nutgram.config%' ]
+    configurator: [ '@SergiX44\Nutgram\Symfony\NutgramConfigurator', 'configure' ]
