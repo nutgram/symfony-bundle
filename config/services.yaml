@@ -4,10 +4,16 @@ services:
 
   SergiX44\Nutgram\Symfony\NutgramConfigurator:
     autowire: true
+    arguments: [ '%nutgram.config%' ]
 
   SergiX44\Nutgram\Nutgram:
     autowire: true
     public: true
     factory: [ '@SergiX44\Nutgram\Symfony\DependencyInjection\Factory\NutgramFactory', 'createNutgram' ]
-    arguments: [ '%nutgram.config%' ]
+    arguments: [ '%nutgram.config%', '@service_container' ]
     configurator: [ '@SergiX44\Nutgram\Symfony\NutgramConfigurator', 'configure' ]
+
+  SergiX44\Nutgram\Symfony\Console\:
+    resource: '../src/Console/'
+    autowire: true
+    tags: [ 'console.command' ]
