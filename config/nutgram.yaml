@@ -1,6 +1,6 @@
 nutgram:
   # The Telegram bot token
-  token: '%env(string:NUTGRAM_TOKEN)%'
+  token: '%env(string:TELEGRAM_TOKEN)%'
 
   # If true, the webhook mode validates the incoming IP range is from a Telegram server
   safe_mode: false
