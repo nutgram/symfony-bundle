@@ -14,7 +14,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "SergiX44\\Nutgram\\Symfony\\": "src/"
+            "SergiX44\\NutgramBundle\\": "src/"
         }
     },
     "authors": [

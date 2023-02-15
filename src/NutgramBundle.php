@@ -1,8 +1,8 @@
 <?php
 
-namespace SergiX44\Nutgram\Symfony;
+namespace SergiX44\NutgramBundle;
 
-use SergiX44\Nutgram\Symfony\DependencyInjection\NutgramExtension;
+use SergiX44\NutgramBundle\DependencyInjection\NutgramExtension;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

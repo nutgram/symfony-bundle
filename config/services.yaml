@@ -1,19 +1,19 @@
 services:
 
-  SergiX44\Nutgram\Symfony\DependencyInjection\Factory\NutgramFactory: ~
+  SergiX44\NutgramBundle\DependencyInjection\Factory\NutgramFactory: ~
 
-  SergiX44\Nutgram\Symfony\NutgramConfigurator:
+  SergiX44\NutgramBundle\NutgramConfigurator:
     autowire: true
     arguments: [ '%nutgram.config%' ]
 
   SergiX44\Nutgram\Nutgram:
     autowire: true
     public: true
-    factory: [ '@SergiX44\Nutgram\Symfony\DependencyInjection\Factory\NutgramFactory', 'createNutgram' ]
+    factory: [ '@SergiX44\NutgramBundle\DependencyInjection\Factory\NutgramFactory', 'createNutgram' ]
     arguments: [ '%nutgram.config%', '@service_container' ]
-    configurator: [ '@SergiX44\Nutgram\Symfony\NutgramConfigurator', 'configure' ]
+    configurator: [ '@SergiX44\NutgramBundle\NutgramConfigurator', 'configure' ]
 
-  SergiX44\Nutgram\Symfony\Console\:
+  SergiX44\NutgramBundle\Console\:
     resource: '../src/Console/'
     autowire: true
     tags: [ 'console.command' ]

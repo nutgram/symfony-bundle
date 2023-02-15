@@ -1,6 +1,6 @@
 <?php
 
-namespace SergiX44\Nutgram\Symfony\DependencyInjection;
+namespace SergiX44\NutgramBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

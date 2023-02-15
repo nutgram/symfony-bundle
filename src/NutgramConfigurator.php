@@ -1,6 +1,6 @@
 <?php
 
-namespace SergiX44\Nutgram\Symfony;
+namespace SergiX44\NutgramBundle;
 
 use SergiX44\Nutgram\Nutgram;
 use Symfony\Component\Config\FileLocator;

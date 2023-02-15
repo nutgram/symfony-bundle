@@ -1,6 +1,6 @@
 <?php
 
-namespace SergiX44\Nutgram\Symfony\DependencyInjection\Factory;
+namespace SergiX44\NutgramBundle\DependencyInjection\Factory;
 
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;

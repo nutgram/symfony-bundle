@@ -1,6 +1,6 @@
 <?php
 
-namespace SergiX44\Nutgram\Symfony\Console;
+namespace SergiX44\NutgramBundle\Console;
 
 use SergiX44\Nutgram\Nutgram;
 use Symfony\Component\Console\Attribute\AsCommand;
