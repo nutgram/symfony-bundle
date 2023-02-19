@@ -12,22 +12,23 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class NutgramFactory
 {
-    public function createNutgram(array $config, ContainerInterface $container, RequestStack $requestStack, ?CacheInterface $cache, ?LoggerInterface $logger)
+    public function createNutgram(array $config, ContainerInterface $container, RequestStack $requestStack, ?CacheInterface $cache, ?LoggerInterface $logger, ?LoggerInterface $consoleLogger)
     {
+        $isCli = \PHP_SAPI === 'cli' || \PHP_SAPI === 'phpdbg';
+
         $bot = new Nutgram($config['token'], array_merge([
             'container' => $container,
             'cache' => $cache,
-            'logger' => $logger,
+            'logger' => $isCli ? $consoleLogger : $logger,
         ], $config['config'] ?? []));
 
-        if (\PHP_SAPI === 'cli' || \PHP_SAPI === 'phpdbg') {
+        if ($isCli) {
             $bot->setRunningMode(Polling::class);
         } else {
             $webhook = Webhook::class;
 
             if ($config['safe_mode'] ?? false) {
-                $request = $requestStack->getCurrentRequest();
-                $webhook = new $webhook(fn() => $request->getClientIp());
+                $webhook = new $webhook(fn() =>  $requestStack->getCurrentRequest()?->getClientIp());
             }
 
             $bot->setRunningMode($webhook);
