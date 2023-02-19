@@ -12,14 +12,14 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class NutgramFactory
 {
-    public function createNutgram(array $config, ContainerInterface $container, RequestStack $requestStack, ?CacheInterface $cache, ?LoggerInterface $logger, ?LoggerInterface $consoleLogger)
+    public function createNutgram(array $config, ContainerInterface $container, RequestStack $requestStack, ?CacheInterface $cache, ?LoggerInterface $nutgramLogger, ?LoggerInterface $nutgramConsoleLogger)
     {
         $isCli = \PHP_SAPI === 'cli' || \PHP_SAPI === 'phpdbg';
 
         $bot = new Nutgram($config['token'], array_merge([
             'container' => $container,
             'cache' => $cache,
-            'logger' => $isCli ? $consoleLogger : $logger,
+            'logger' => $isCli ? $nutgramConsoleLogger : $nutgramLogger,
         ], $config['config'] ?? []));
 
         if ($isCli) {
