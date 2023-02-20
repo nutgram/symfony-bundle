@@ -2,14 +2,14 @@
 
 namespace SergiX44\NutgramBundle\DependencyInjection\Factory;
 
+use Psr\Cache\CacheItemPoolInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
-use Psr\SimpleCache\CacheInterface;
 use SergiX44\Nutgram\Nutgram;
 use SergiX44\Nutgram\RunningMode\Polling;
 use SergiX44\Nutgram\RunningMode\Webhook;
+use Symfony\Component\Cache\Psr16Cache;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Contracts\Cache\TagAwareCacheInterface;
 
 class NutgramFactory
 {
@@ -17,7 +17,7 @@ class NutgramFactory
         array $config,
         ContainerInterface $container,
         RequestStack $requestStack,
-        ?TagAwareCacheInterface $nutgramCache,
+        ?CacheItemPoolInterface $nutgramCache,
         ?LoggerInterface $nutgramLogger,
         ?LoggerInterface $nutgramConsoleLogger
     ): Nutgram {
@@ -25,7 +25,7 @@ class NutgramFactory
 
         $bot = new Nutgram($config['token'], array_merge([
             'container' => $container,
-            'cache' => $nutgramCache,
+            'cache' => new Psr16Cache($nutgramCache),
             'logger' => $isCli ? $nutgramConsoleLogger : $nutgramLogger,
         ], $config['config'] ?? []));
 
