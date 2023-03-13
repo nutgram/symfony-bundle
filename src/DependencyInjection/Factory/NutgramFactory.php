@@ -10,6 +10,7 @@ use SergiX44\Nutgram\RunningMode\Polling;
 use SergiX44\Nutgram\RunningMode\Webhook;
 use Symfony\Component\Cache\Psr16Cache;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 class NutgramFactory
 {
@@ -17,10 +18,16 @@ class NutgramFactory
         array $config,
         ContainerInterface $container,
         RequestStack $requestStack,
+        KernelInterface $kernel,
         ?CacheItemPoolInterface $nutgramCache,
         ?LoggerInterface $nutgramLogger,
         ?LoggerInterface $nutgramConsoleLogger
     ): Nutgram {
+
+        if ($kernel->getEnvironment() === 'test') {
+            return Nutgram::fake();
+        }
+
         $isCli = \PHP_SAPI === 'cli' || \PHP_SAPI === 'phpdbg';
 
         $bot = new Nutgram($config['token'], array_merge([
