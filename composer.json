@@ -3,8 +3,8 @@
     "description": "Nutgram for Symfony",
     "type": "symfony-bundle",
     "require": {
-        "php": "^8.0",
-        "nutgram/nutgram": "^3.0",
+        "php": "^8.2",
+        "nutgram/nutgram": "4.x-dev",
         "symfony/cache": "^6.0",
         "symfony/config": "^6.0",
         "symfony/http-kernel": "^6.0",

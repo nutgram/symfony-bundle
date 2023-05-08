@@ -36,7 +36,7 @@ class LogoutCommand extends Command
         $dropPendingUpdates = (bool)$input->getOption('drop-pending-updates');
 
         try {
-            $this->bot->deleteWebhook(['drop_pending_updates' => $dropPendingUpdates]);
+            $this->bot->deleteWebhook($dropPendingUpdates);
         } finally {
             $io->info('Webhook deleted.');
         }
