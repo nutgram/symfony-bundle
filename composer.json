@@ -4,7 +4,7 @@
     "type": "symfony-bundle",
     "require": {
         "php": "^8.2",
-        "nutgram/nutgram": "4.x-dev",
+        "nutgram/nutgram": "^4",
         "symfony/cache": "^6.0",
         "symfony/config": "^6.0",
         "symfony/http-kernel": "^6.0",
@@ -17,6 +17,11 @@
             "SergiX44\\NutgramBundle\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "SergiX44\\NutgramBundle\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Sergio Brighenti",
@@ -24,5 +29,14 @@
         }
     ],
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "require-dev": {
+        "symfony/framework-bundle": "^6.2",
+        "pestphp/pest": "^2.6"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
 }
