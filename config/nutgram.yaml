@@ -3,10 +3,10 @@ nutgram:
   token: '%env(string:TELEGRAM_TOKEN)%'
 
   # If true, the webhook mode validates the incoming IP range is from a Telegram server
-  safe_mode: false
-
-  # Extra or specific configuration
-  config: [ ]
+  safeMode: false
 
   # If the nutgram bundle should automatically load the routes from config/telegram.php
   routes: true
+
+  # Extra or specific configuration
+  config: [ ]

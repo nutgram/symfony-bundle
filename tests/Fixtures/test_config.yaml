@@ -4,6 +4,12 @@ framework:
 
 nutgram:
   token: '%env(string:TELEGRAM_TOKEN)%'
-  safe_mode: false
-  config: [ ]
+  safeMode: false
   routes: true
+  config:
+    botId: 123
+    apiUrl: 'BlaBla'
+    botName: 'EEE'
+    testEnv: true
+    pollingTimeout: 123
+    pollingLimit: 456

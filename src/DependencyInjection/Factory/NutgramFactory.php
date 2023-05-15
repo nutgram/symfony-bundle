@@ -24,11 +24,6 @@ class NutgramFactory
         ?LoggerInterface $nutgramLogger,
         ?LoggerInterface $nutgramConsoleLogger
     ): Nutgram {
-
-        if ($kernel->getEnvironment() === 'test') {
-            return Nutgram::fake();
-        }
-
         $isCli = \PHP_SAPI === 'cli' || \PHP_SAPI === 'phpdbg';
 
         $configuration = new Configuration(
@@ -37,6 +32,10 @@ class NutgramFactory
             cache: new Psr16Cache($nutgramCache),
             logger: $isCli ? $nutgramConsoleLogger : $nutgramLogger
         );
+
+        if ($kernel->getEnvironment() === 'test') {
+            return Nutgram::fake(config: $configuration);
+        }
 
         $bot = new Nutgram($config['token'], $configuration);
 
