@@ -27,10 +27,18 @@ class NutgramFactory
         $isCli = \PHP_SAPI === 'cli' || \PHP_SAPI === 'phpdbg';
 
         $configuration = new Configuration(
-            clientOptions: $config['client_options'] ?? [],
+            apiUrl: $config['config']['apiUrl'],
+            botId: $config['config']['botId'],
+            botName: $config['config']['botName'],
+            testEnv: $config['config']['testEnv'],
+            clientTimeout: $config['config']['clientTimeout'],
+            clientOptions: $config['config']['clientOptions'] ?? [],
             container: $container,
             cache: new Psr16Cache($nutgramCache),
-            logger: $isCli ? $nutgramConsoleLogger : $nutgramLogger
+            logger: $isCli ? $nutgramConsoleLogger : $nutgramLogger,
+            localPathTransformer: $config['config']['localPathTransformer'],
+            pollingTimeout: $config['config']['pollingTimeout'],
+            pollingLimit: $config['config']['pollingLimit'],
         );
 
         if ($kernel->getEnvironment() === 'test') {
