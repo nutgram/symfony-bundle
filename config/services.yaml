@@ -13,6 +13,9 @@ services:
     arguments: [ '%nutgram.config%', '@service_container' ]
     configurator: [ '@SergiX44\NutgramBundle\NutgramConfigurator', 'configure' ]
 
+  nutgram:
+    alias: 'SergiX44\Nutgram\Nutgram'
+
   SergiX44\NutgramBundle\Console\:
     resource: '../src/Console/'
     autowire: true

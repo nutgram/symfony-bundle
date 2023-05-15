@@ -2,16 +2,21 @@
     "name": "nutgram/symfony-bundle",
     "description": "Nutgram for Symfony",
     "type": "symfony-bundle",
+    "license": "MIT",
     "require": {
         "php": "^8.2",
-        "nutgram/nutgram": "^4",
+        "nutgram/nutgram": "^4.0",
         "symfony/cache": "^6.0",
         "symfony/config": "^6.0",
         "symfony/http-kernel": "^6.0",
         "symfony/dependency-injection": "^6.0",
         "symfony/console": "^6.0"
     },
-    "license": "MIT",
+    "require-dev": {
+        "symfony/framework-bundle": "^6.0",
+        "symfony/yaml": "^6.0",
+        "pestphp/pest": "^2.6"
+    },
     "autoload": {
         "psr-4": {
             "SergiX44\\NutgramBundle\\": "src/"
@@ -28,12 +33,12 @@
             "email": "sergio@brighenti.me"
         }
     ],
+    "scripts": {
+        "test": "@php vendor/bin/pest --fail-on-warning",
+        "test-coverage": "@php vendor/bin/pest --coverage --coverage-clover=coverage.xml --fail-on-warning"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "require-dev": {
-        "symfony/framework-bundle": "^6.2",
-        "pestphp/pest": "^2.6"
-    },
     "config": {
         "allow-plugins": {
             "pestphp/pest-plugin": true

@@ -22,7 +22,7 @@ class NutgramConfigurator
 
     public function configure()
     {
-        if (!$this->config['routes']) {
+        if (!($this->config['routes'] ?? false)) {
             return;
         }
 

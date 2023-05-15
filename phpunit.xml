@@ -10,8 +10,13 @@
         </testsuite>
     </testsuites>
     <coverage>
-        <include>>
+        <include>
             <directory suffix=".php">./src</directory>
         </include>
     </coverage>
+    <php>
+        <env name="APP_ENV" value="test"/>
+        <env name="KERNEL_CLASS" value="SergiX44\NutgramBundle\Tests\Fixtures\AppKernel"/>
+        <env name="TELEGRAM_TOKEN" value="TOTALLY_NOT_A_TELEGRAM_TOKEN"/>
+    </php>
 </phpunit>
