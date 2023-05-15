@@ -1,3 +1,9 @@
 framework:
   secret: "Three can keep a secret, if two of them are dead."
   test: ~
+
+nutgram:
+  token: '%env(string:TELEGRAM_TOKEN)%'
+  safe_mode: false
+  config: [ ]
+  routes: true
