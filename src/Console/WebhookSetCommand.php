@@ -50,7 +50,7 @@ class WebhookSetCommand extends Command
             $max_connections = (int)$max_connections;
         }
 
-        $this->bot->setWebhook($url, array_filter(compact('ip_address', 'max_connections')));
+        $this->bot->setWebhook($url, ip_address: $ip_address, max_connections: $max_connections);
 
         $io->info("Bot webhook set with url: $url");
 

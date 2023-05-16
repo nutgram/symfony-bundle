@@ -35,9 +35,7 @@ class WebhookRemoveCommand extends Command
 
         $dropPendingUpdates = (bool)$input->getOption('drop-pending-updates');
 
-        $this->bot->deleteWebhook([
-            'drop_pending_updates' => $dropPendingUpdates,
-        ]);
+        $this->bot->deleteWebhook($dropPendingUpdates);
 
         if ($dropPendingUpdates) {
             $io->info('Pending updates dropped.');

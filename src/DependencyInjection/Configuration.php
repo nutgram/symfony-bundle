@@ -13,11 +13,22 @@ class Configuration implements ConfigurationInterface
 
         $treeBuilder->getRootNode()
             ->children()
-            ->scalarNode('token')->end()
-            ->booleanNode('safe_mode')->end()
-            ->arrayNode('config')->end()
-            ->booleanNode('routes')->end()
-            ->end()
+                ->scalarNode('token')->end()
+                ->booleanNode('safeMode')->end()
+                ->booleanNode('routes')->end()
+                ->arrayNode('config')
+                ->children()
+                    ->scalarNode('apiUrl')->defaultValue(\SergiX44\Nutgram\Configuration::DEFAULT_API_URL)->end()
+                    ->scalarNode('botId')->defaultNull()->end()
+                    ->scalarNode('botName')->defaultNull()->end()
+                    ->booleanNode('testEnv')->defaultFalse()->end()
+                    ->scalarNode('clientTimeout')->defaultValue(\SergiX44\Nutgram\Configuration::DEFAULT_CLIENT_TIMEOUT)->end()
+                    ->arrayNode('clientOptions')->end()
+                    ->scalarNode('localPathTransformer')->defaultNull()->end()
+                    ->scalarNode('pollingTimeout')->defaultValue(\SergiX44\Nutgram\Configuration::DEFAULT_POLLING_TIMEOUT)->end()
+                    ->scalarNode('pollingLimit')->defaultValue(\SergiX44\Nutgram\Configuration::DEFAULT_POLLING_LIMIT)->end()
+                    ->arrayNode('pollingAllowedUpdates')->end()
+                ->end()
             ->end();
 
         return $treeBuilder;
