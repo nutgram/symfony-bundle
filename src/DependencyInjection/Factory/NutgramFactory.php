@@ -39,6 +39,7 @@ class NutgramFactory
             localPathTransformer: $config['config']['localPathTransformer'],
             pollingTimeout: $config['config']['pollingTimeout'],
             pollingLimit: $config['config']['pollingLimit'],
+            enableHttp2: $config['config']['enableHttp2'],
         );
 
         if ($kernel->getEnvironment() === 'test') {
