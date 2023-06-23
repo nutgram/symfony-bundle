@@ -28,6 +28,7 @@ class Configuration implements ConfigurationInterface
                     ->scalarNode('pollingTimeout')->defaultValue(\SergiX44\Nutgram\Configuration::DEFAULT_POLLING_TIMEOUT)->end()
                     ->scalarNode('pollingLimit')->defaultValue(\SergiX44\Nutgram\Configuration::DEFAULT_POLLING_LIMIT)->end()
                     ->arrayNode('pollingAllowedUpdates')->end()
+                    ->booleanNode('enableHttp2')->defaultValue(\SergiX44\Nutgram\Configuration::DEFAULT_ENABLE_HTTP2)->end()
                 ->end()
             ->end();
 
