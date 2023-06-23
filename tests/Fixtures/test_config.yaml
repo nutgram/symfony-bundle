@@ -13,3 +13,4 @@ nutgram:
     testEnv: true
     pollingTimeout: 123
     pollingLimit: 456
+    enableHttp2: true
