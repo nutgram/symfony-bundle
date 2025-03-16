@@ -18,7 +18,7 @@ class RegisterCommandsCommand extends Command
 
     private Nutgram $bot;
 
-    public function __construct(Nutgram $bot, string $name = null)
+    public function __construct(Nutgram $bot, ?string $name = null)
     {
         parent::__construct($name);
         $this->bot = $bot;
