@@ -18,7 +18,7 @@ class BundleInitCommand extends Command
 
     private KernelInterface $kernel;
 
-    public function __construct(KernelInterface $kernel, string $name = null)
+    public function __construct(KernelInterface $kernel, ?string $name = null)
     {
         parent::__construct($name);
         $this->kernel = $kernel;
