@@ -3,7 +3,7 @@ nutgram:
   token: '%env(string:TELEGRAM_TOKEN)%'
 
   # Specify webhook secret for increased security
-  #webhook_secret: '%env(string:TELEGRAM_TOKEN)%'
+  #webhook_secret: '%env(string:WEBHOOK_TOKEN)%'
 
   # If the nutgram bundle should automatically load the routes from config/telegram.php
   routes: true
