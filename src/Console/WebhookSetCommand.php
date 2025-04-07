@@ -19,10 +19,9 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 class WebhookSetCommand extends Command
 {
     private Nutgram $bot;
-
     private ParameterBagInterface $parameters;
 
-    public function __construct(Nutgram $bot, ParameterBagInterface $parameters, string $name = null)
+    public function __construct(Nutgram $bot, ParameterBagInterface $parameters, ?string $name = null)
     {
         parent::__construct($name);
         $this->bot = $bot;
