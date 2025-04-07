@@ -14,7 +14,7 @@ class Configuration implements ConfigurationInterface
         $treeBuilder->getRootNode()
             ->children()
                 ->scalarNode('token')->end()
-                ->booleanNode('safeMode')->end()
+				->scalarNode('webhook_secret')->defaultNull()->end()
                 ->booleanNode('routes')->end()
                 ->arrayNode('config')
                 ->children()

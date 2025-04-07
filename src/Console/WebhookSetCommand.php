@@ -10,6 +10,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 #[AsCommand(
     name: 'nutgram:hook:set',
@@ -18,11 +19,13 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 class WebhookSetCommand extends Command
 {
     private Nutgram $bot;
+    private ParameterBagInterface $parameters;
 
-    public function __construct(Nutgram $bot, ?string $name = null)
+    public function __construct(Nutgram $bot, ParameterBagInterface $parameters, ?string $name = null)
     {
         parent::__construct($name);
         $this->bot = $bot;
+        $this->parameters = $parameters;
     }
 
     protected function configure(): void
@@ -50,7 +53,8 @@ class WebhookSetCommand extends Command
             $max_connections = (int)$max_connections;
         }
 
-        $this->bot->setWebhook($url, ip_address: $ip_address, max_connections: $max_connections);
+        $secret = $this->parameters->get('nutgram.config')['webhook_secret'];
+        $this->bot->setWebhook($url, ip_address: $ip_address, max_connections: $max_connections, secret_token: $secret);
 
         $io->info("Bot webhook set with url: $url");
 

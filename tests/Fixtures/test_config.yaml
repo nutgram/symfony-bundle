@@ -4,8 +4,8 @@ framework:
 
 nutgram:
   token: '%env(string:TELEGRAM_TOKEN)%'
-  safeMode: false
   routes: true
+  webhook_secret: 'VerySecret'
   config:
     botId: 123
     apiUrl: 'BlaBla'
