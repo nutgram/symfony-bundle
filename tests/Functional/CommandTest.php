@@ -8,6 +8,7 @@ use SergiX44\NutgramBundle\Console\WebhookInfoCommand;
 use SergiX44\NutgramBundle\Console\WebhookRemoveCommand;
 use SergiX44\NutgramBundle\Console\WebhookSetCommand;
 use Symfony\Component\Console\Tester\CommandTester;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 it('call the logout command', function () {
     /** @var \SergiX44\Nutgram\Testing\FakeNutgram $instance */
@@ -72,8 +73,9 @@ it('call the remove webhook', function () {
 it('calls the set webhook', function () {
     /** @var \SergiX44\Nutgram\Testing\FakeNutgram $instance */
     $instance = static::getContainer()->get(Nutgram::class);
+    $parameters = static::getContainer()->get(ParameterBagInterface::class);
 
-    $commandTester = new CommandTester(new WebhookSetCommand($instance));
+    $commandTester = new CommandTester(new WebhookSetCommand($instance, $parameters));
     $commandTester->execute(['url' => 'http://foo.bar']);
     $commandTester->assertCommandIsSuccessful();
 

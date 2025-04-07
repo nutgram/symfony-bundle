@@ -53,8 +53,9 @@ class NutgramFactory
         } else {
             $webhook = Webhook::class;
 
-            if ($config['safe_mode'] ?? false) {
-                $webhook = new $webhook(fn() => $requestStack->getCurrentRequest()?->getClientIp());
+            if ($config['webhook_secret']) {
+                $webhook = new Webhook(secretToken: $config['webhook_secret']);
+                $webhook->setSafeMode(true);
             }
 
             $bot->setRunningMode($webhook);
