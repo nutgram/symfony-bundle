@@ -7,7 +7,6 @@ use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use SergiX44\Nutgram\Configuration;
 use SergiX44\Nutgram\Nutgram;
-use SergiX44\Nutgram\RunningMode\Polling;
 use SergiX44\Nutgram\RunningMode\Webhook;
 use Symfony\Component\Cache\Psr16Cache;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -28,7 +27,6 @@ class NutgramFactory
 
         $configuration = new Configuration(
             apiUrl: $config['config']['apiUrl'],
-            botId: $config['config']['botId'],
             botName: $config['config']['botName'],
             testEnv: $config['config']['testEnv'],
             clientTimeout: $config['config']['clientTimeout'],
@@ -48,9 +46,7 @@ class NutgramFactory
 
         $bot = new Nutgram($config['token'], $configuration);
 
-        if ($isCli) {
-            $bot->setRunningMode(Polling::class);
-        } else {
+        if (!$isCli) {
             $webhook = Webhook::class;
 
             if ($config['webhook_secret']) {
@@ -60,7 +56,6 @@ class NutgramFactory
 
             $bot->setRunningMode($webhook);
         }
-
 
         return $bot;
     }
