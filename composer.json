@@ -4,8 +4,8 @@
     "type": "symfony-bundle",
     "license": "MIT",
     "require": {
-        "php": "^8.2",
-        "nutgram/nutgram": "^4.12.1",
+        "php": "^8.4",
+        "nutgram/nutgram": "^5.0",
         "symfony/cache": "^6.0|^7.0|^8.0",
         "symfony/config": "^6.0|^7.0|^8.0",
         "symfony/http-kernel": "^6.0|^7.0|^8.0",

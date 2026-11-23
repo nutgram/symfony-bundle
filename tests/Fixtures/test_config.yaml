@@ -7,7 +7,6 @@ nutgram:
   routes: true
   webhook_secret: 'VerySecret'
   config:
-    botId: 123
     apiUrl: 'BlaBla'
     botName: 'EEE'
     testEnv: true

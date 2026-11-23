@@ -19,7 +19,6 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('config')
                 ->children()
                     ->scalarNode('apiUrl')->defaultValue(\SergiX44\Nutgram\Configuration::DEFAULT_API_URL)->end()
-                    ->scalarNode('botId')->defaultNull()->end()
                     ->scalarNode('botName')->defaultNull()->end()
                     ->booleanNode('testEnv')->defaultFalse()->end()
                     ->scalarNode('clientTimeout')->defaultValue(\SergiX44\Nutgram\Configuration::DEFAULT_CLIENT_TIMEOUT)->end()
